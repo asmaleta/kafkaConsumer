@@ -1,7 +1,7 @@
 package com.example.demo.Kafka;
 
 
-import com.example.demo.Model.UserDTO;
+import com.example.demo.DTO.UserDTO;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
