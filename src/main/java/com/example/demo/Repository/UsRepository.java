@@ -1,7 +1,7 @@
 package com.example.demo.Repository;
 
-import com.example.demo.DTO.UserDTO;
+import com.example.demo.DTO.User;
 
 public interface UsRepository {
-    UserDTO addToDB(UserDTO userDTO);
+    User addToDB(User userDTO);
 }

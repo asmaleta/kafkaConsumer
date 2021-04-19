@@ -1,6 +1,6 @@
 package com.example.demo.Repository;
 
-import com.example.demo.DTO.UserDTO;
+import com.example.demo.DTO.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +11,7 @@ public class UsRepositoryImp implements UsRepository{
     private UserRepository userRepository;
 
     @Override
-    public UserDTO addToDB(UserDTO userDTO) {
+    public User addToDB(User userDTO) {
 
         return userRepository.save(userDTO);
     }

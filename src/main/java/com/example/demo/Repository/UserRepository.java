@@ -1,7 +1,7 @@
 package com.example.demo.Repository;
 
-import com.example.demo.DTO.UserDTO;
+import com.example.demo.DTO.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<UserDTO, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 }

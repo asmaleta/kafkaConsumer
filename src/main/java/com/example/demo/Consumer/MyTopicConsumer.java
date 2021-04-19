@@ -1,14 +1,13 @@
 package com.example.demo.Consumer;
 
-import com.example.demo.DTO.UserDTO;
+import com.example.demo.DTO.User;
 import com.example.demo.Repository.UsRepository;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class MyTopicConsumer {
@@ -16,20 +15,21 @@ public class MyTopicConsumer {
     @Autowired
     private UsRepository usRepository;
 
-    UserDTO userDTO = new UserDTO( 4L, "dsa");
-    private final ArrayDeque<UserDTO> messages = new ArrayDeque<>();
+    private final ArrayDeque<User> messages = new ArrayDeque<>();
 
-    @KafkaListener(topics = "myTopic", groupId = "kafka-sandbox")
-    public void listen(UserDTO message) {
+    @KafkaListener(topics = "my-replicated-topic")
+    public void listen(String message) {
         synchronized (messages) {
-            messages.add(message);
+            Gson gson = new Gson();
+            System.out.println(message);
+            messages.add(gson.fromJson(message, User.class));
             usRepository.addToDB(messages.pop());
 
         }
 
     }
 
-    public ArrayDeque<UserDTO> getMessages() {
+    public ArrayDeque<User> getMessages() {
         return messages;
     }
 }

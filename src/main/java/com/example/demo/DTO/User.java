@@ -4,9 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class UserDTO {
+public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "age")
@@ -15,12 +14,13 @@ public class UserDTO {
     @Column(name = "name")
     private String name;
 
-    public UserDTO() {
+    public User() {
     }
 
 
 
-    public UserDTO(Long age, String name) {
+    public User(Long id,Long age, String name) {
+        this.id = id;
         this.age = age;
         this.name = name;
     }
